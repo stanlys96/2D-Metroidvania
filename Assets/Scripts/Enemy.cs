@@ -61,10 +61,6 @@ public class Enemy : MonoBehaviour
     private void PatrolBehaviour()
     {
         Vector2 waypoint = patrolPoints.transform.GetChild(currentIndex).transform.position;
-        if (gameObject.name == "Goblin")
-        {
-            print(rigidbody.velocity);
-        }
         if (timeSinceLastIdle > idleTime)
         {
             if (Vector2.Distance(transform.position, waypoint) >= 1f)

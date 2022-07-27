@@ -11,6 +11,7 @@ public class HUD : MonoBehaviour
     {
         Sprite[] nameSprites = new Sprite[6];
         int index = 0;
+        print(GameManager.instance.firstName);
         if (GameManager.instance != null && GameManager.instance.firstName != null)
         {
             foreach (char item in GameManager.instance.firstName)

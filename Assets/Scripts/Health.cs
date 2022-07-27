@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class Health : MonoBehaviour
     private bool isDead = false;
     public GameObject floatingTextPrefab;
     public GameObject experienceText;
-
+    public UnityEvent onDie;
     private void Start()
     {
         hitpoint = maxHitpoint;
@@ -21,6 +22,10 @@ public class Health : MonoBehaviour
         hitpoint = Mathf.Max(hitpoint - damage, 0);
         if (hitpoint <= 0 && !isDead)
         {
+            if (gameObject.tag == "Player")
+            {
+                onDie.Invoke();
+            }
             isDead = true;
             canvas.enabled = false;
             animator.SetTrigger("death");
